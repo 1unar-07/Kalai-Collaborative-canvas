@@ -41,7 +41,8 @@ Controls the drawing logic, user interface, tool management, and communication w
 
 This shows how drawing data moves between users, the client, and the server.
 
-<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/18e6733d-0466-4917-9c8c-a8135c62f24c" />
+<img width="601" height="682" alt="image" src="https://github.com/user-attachments/assets/7e524477-bb0b-414c-817f-8a532732d86f" />
+
 
 
 
@@ -124,6 +125,7 @@ Simultaneous drawings from multiple users are handled gracefully:
 - **Clients** render locally but stay synchronized through WebSockets.  
 - **Undo/redo** and **clear** actions are globally broadcast.  
 - The app prioritizes **speed**, **simplicity**, and **low latency** for real-time collaboration.
+
 
 
 
