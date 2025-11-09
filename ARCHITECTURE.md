@@ -41,15 +41,8 @@ Controls the drawing logic, user interface, tool management, and communication w
 
 This shows how drawing data moves between users, the client, and the server.
 
-User A (Browser) ──► Server (Node.js + Socket.IO) ──► User B (Browser)
-│ │ │
-│ emits 'draw' event │ │
-│─────────────────────────►│ │
-│ │ broadcasts 'draw' event │
-│ ├────────────────────────────►│
-│ │ │
-│ ▼ │
-│ All users update their canvas in real time │
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/18e6733d-0466-4917-9c8c-a8135c62f24c" />
+
 
 
 **Flow Summary:**
@@ -131,6 +124,7 @@ Simultaneous drawings from multiple users are handled gracefully:
 - **Clients** render locally but stay synchronized through WebSockets.  
 - **Undo/redo** and **clear** actions are globally broadcast.  
 - The app prioritizes **speed**, **simplicity**, and **low latency** for real-time collaboration.
+
 
 
 
