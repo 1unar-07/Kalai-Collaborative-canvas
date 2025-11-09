@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title > Kalai</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Toolbar -->
+      <header class="toolbar">
+        <div class="toolbar-left">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/588/588846.png"
+            alt="Splash Icon"
+            class="logo" height = "30px" width="30px"
+          />
+          <h1>Kalai</h1>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/588/588846.png"
+            alt="Splash Icon"
+            class="logo" height = "30px" width="30px"
+          />
+        </div>
+
+        <div class="toolbar-center">
+          <button id="brush-btn" class="tool-btn active" title="Brush (B)">
+            ✏️
+          </button>
+          <button id="eraser-btn" class="tool-btn" title="Eraser (E)">
+            🧹
+          </button>
+
+          <div class="divider"></div>
+
+          <input
+            type="color"
+            id="color-picker"
+            value="#667eea"
+            title="Pick a color"
+          />
+          <input
+            type="range"
+            id="stroke-width"
+            min="1"
+            max="20"
+            value="4"
+            title="Brush size"
+          />
+          <span id="width-display">4px</span>
+
+          <div class="divider"></div>
+
+          <button id="undo-btn" class="action-btn" title="Undo (Ctrl+Z)">
+            ↶
+          </button>
+          <button id="redo-btn" class="action-btn" title="Redo (Ctrl+Shift+Z)">
+            ↷
+          </button>
+          <button id="clear-btn" class="action-btn danger" title="Clear canvas">
+            🗑️
+          </button>
+        </div>
+
+        <div class="toolbar-right">
+          <div class="user-section">
+            <span>👥</span>
+            <div id="users-list" class="users-list"></div>
+          </div>
+          <div id="connection-status" class="status">
+            <span class="dot"></span>
+            <span id="status-text">Connecting...</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Canvas Area -->
+      <main class="canvas-area">
+        <canvas id="canvas"></canvas>
+        <div id="cursors-container"></div>
+      </main>
+    </div>
+
+    <!-- Username Modal -->
+    <div id="username-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Enter Your Username</h2>
+        <p
+          id="username-error-message"
+          class="error-message"
+          style="display: none"
+        ></p>
+        <form id="username-form">
+          <input
+            type="text"
+            id="username-input"
+            placeholder="Username"
+            maxlength="20"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="submit-btn">Join Canvas</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Performance Metrics -->
+    <div id="metrics" class="metrics-panel">
+      <span id="fps-display">FPS: --</span>
+      <span id="latency-display">Latency: -- ms</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+    <script src="canvas.js"></script>
+    <script src="websocket.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
