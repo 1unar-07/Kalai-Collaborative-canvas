@@ -2,6 +2,8 @@
 
 
 A real-time collaborative drawing canvas where multiple users can draw simultaneously on the same HTML5 canvas, see each other's drawings, cursor positions, and actions instantly — powered by WebSockets.
+<img width="1839" height="913" alt="image" src="https://github.com/user-attachments/assets/6c73eded-93b4-413f-a35d-2b4a8d317e83" />
+
 
 ##  Features
 
