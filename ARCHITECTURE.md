@@ -3,8 +3,41 @@
 This document explains how the Kalai collaborative drawing app works internally — including data flow, WebSocket communication, undo/redo logic, performance choices, and conflict resolution.
 
 ---
+## 1. Technologies Used
 
-## 1. Data Flow Diagram
+### **Node.js**
+Used to run the server-side JavaScript code.  
+It handles HTTP requests, WebSocket connections, and manages all real-time interactions.
+
+### **Express.js**
+A lightweight Node.js framework used to serve static files (HTML, CSS, JS) and handle HTTP routes.
+
+### **Socket.IO**
+A WebSocket library that enables **real-time, bidirectional communication** between the server and clients.  
+All drawing updates, cursor positions, and user actions use this for synchronization.
+
+### **HTML5 Canvas**
+The main drawing surface used by the client.  
+Each user draws directly on the canvas using brush or eraser tools.
+
+### **JavaScript (Client-Side)**
+Controls the drawing logic, user interface, tool management, and communication with the server via WebSockets.
+
+### **Files Overview**
+
+| File | Description |
+|------|--------------|
+| `server/server.js` | The main backend file using **Node.js + Express + Socket.IO** to manage users, drawing actions, and synchronization. |
+| `client/index.html` | The main frontend file defining the app layout (toolbar, canvas, etc.). |
+| `client/style.css` | Handles the visual appearance of the app (toolbar, canvas layout, etc.). |
+| `client/canvas.js` | Contains all logic for drawing on the canvas, handling tools, and local undo/redo. |
+| `client/main.js` | Initializes the app, manages user input, buttons, and keyboard shortcuts. |
+| `client/websocket.js` | Manages all WebSocket communication between the client and server. |
+
+---
+
+
+## 2. Data Flow Diagram
 
 This shows how drawing data moves between users, the client, and the server.
 
@@ -28,7 +61,7 @@ User A (Browser) ──► Server (Node.js + Socket.IO) ──► User B (Browse
 
 ---
 
-## 2. WebSocket Protocol
+## 3. WebSocket Protocol
 
 The app uses **Socket.IO** for real-time communication.  
 Each message is an event with a small JSON payload.
@@ -47,7 +80,7 @@ Each message is an event with a small JSON payload.
 
 ---
 
-## 3. Undo/Redo Strategy
+## 4. Undo/Redo Strategy
 
 Each user can only undo or redo their own drawings.  
 The server ensures all clients stay synchronized.
@@ -67,7 +100,7 @@ Undo/Redo only affects that user’s actions, not others’.
 
 ---
 
-## 4. Performance Decisions
+## 5. Performance Decisions
 
 To keep drawing smooth and responsive, several optimizations were used:
 
@@ -80,7 +113,7 @@ To keep drawing smooth and responsive, several optimizations were used:
 
 ---
 
-## 5. Conflict Resolution
+## 6. Conflict Resolution
 
 Simultaneous drawings from multiple users are handled gracefully:
 
@@ -98,6 +131,7 @@ Simultaneous drawings from multiple users are handled gracefully:
 - **Clients** render locally but stay synchronized through WebSockets.  
 - **Undo/redo** and **clear** actions are globally broadcast.  
 - The app prioritizes **speed**, **simplicity**, and **low latency** for real-time collaboration.
+
 
 
 
