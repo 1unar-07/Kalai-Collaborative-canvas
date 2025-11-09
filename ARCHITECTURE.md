@@ -99,5 +99,6 @@ Simultaneous drawings from multiple users are handled gracefully:
 - **Undo/redo** and **clear** actions are globally broadcast.  
 - The app prioritizes **speed**, **simplicity**, and **low latency** for real-time collaboration.
 
-### Data Structures
+
+
 
